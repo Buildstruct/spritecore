@@ -128,6 +128,16 @@ local function spriteRemoveAll(self)
 end
 
 -- E2 FUNCTIONS --
+
+__e2setcost(1)
+
+e2function number spriteCanCreate()
+	if canSpawnSprite(self) then
+		return 1
+	end
+	return 0
+end
+
 -- SPRITE CREATOR ALL --
 -- Args: Index, Path, Pos, Color, Alpha, Scale, Parent, RenderMode, Framerate
 
