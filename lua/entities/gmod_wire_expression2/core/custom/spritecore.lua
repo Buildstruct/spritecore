@@ -245,6 +245,14 @@ e2function entity spriteSpawn(index)
 	return CreateSprite(self, index)
 end
 
+__e2setcost(5)
+
+e2function entity spriteEntity(index)
+	return getSprite(self, index) or NULL
+end
+
+__e2setcost(30)
+
 e2function entity spriteDeleteAll()
 	if not self.player:IsValid() or not self.player:IsPlayer() then return end
 	
