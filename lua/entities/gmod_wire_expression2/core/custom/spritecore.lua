@@ -278,7 +278,7 @@ e2function void spriteSetPos(index, vector pos)
 	pos = Vector(pos[1], pos[2], pos[3])
 
 	local spr = getSprite(self, index)
-	if IsValid(spr) then E2Lib.setPos(pos) end
+	if IsValid(spr) then E2Lib.setPos(spr, pos) end
 end
 
 -- SPRITE SET COLOR --
