@@ -37,7 +37,7 @@ local textures = {
 	"sprites/redglow4.vmt",
 	"sprites/fire.vmt",
 	"sprites/fire1.vmt",
-	"sprites/fire2.vmt"
+	"sprites/fire2.vmt",
 }
 
 local rendermodes = {
@@ -51,12 +51,12 @@ local rendermodes = {
 	"8 = Alpha Add",
 	"9 = World Glow",
 	"10 = Don't Render",
-	"Default Render is 9 (World Glow)."
+	"Default Render is 9 (World Glow).",
 }
 
 -- CHECK FUNCTIONS --
 local function canSpawnSprite(self)
-	return self.data.sprite_count >= wire_spritecore_max:GetInt()
+	return self.data.sprite_count < wire_spritecore_max:GetInt()
 end
 
 local function getSprite(self, index)
@@ -329,9 +329,10 @@ e2function void spriteSetScale(index, scale)
 	if not canSpawnSprite(self) then return end
 
 	local spr = getSprite(self, index)
-
-	if scale > wire_spritecore_maxscale:GetInt() then scale = wire_spritecore_maxscale:GetInt() end
-	if IsValid(spr) then spr:SetKeyValue("scale", scale) end
+	if IsValid(spr) then
+		if scale > wire_spritecore_maxscale:GetInt() then scale = wire_spritecore_maxscale:GetInt() end
+		spr:SetKeyValue("scale", scale)
+	end
 end
 
 -- SPRITE SET PARENT --
@@ -367,7 +368,7 @@ e2function void spriteList()
 	if not textures then return end
 
 	self.player:ChatPrint("Sprite List:")
-	for k, v in pairs (textures) do
+	for _, v in ipairs(textures) do
 		self.player:ChatPrint(v)
 	end
 
@@ -380,7 +381,7 @@ e2function void spriteRList()
 	if not textures then return end
 
 	self.player:ChatPrint("Render Modes:")
-	for k, v in pairs(rendermodes) do
+	for _, v in ipairs(rendermodes) do
 		self.player:ChatPrint(v)
 	end
 
