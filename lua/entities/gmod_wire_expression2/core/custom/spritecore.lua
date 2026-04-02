@@ -131,6 +131,7 @@ end
 
 __e2setcost(1)
 
+-- SPRITE CAN CREATE --
 e2function number spriteCanCreate()
 	if canSpawnSprite(self) then
 		return 1
@@ -247,12 +248,14 @@ end
 
 __e2setcost(5)
 
+-- SPRITE ENTITY --
 e2function entity spriteEntity(index)
 	return getSprite(self, index) or NULL
 end
 
 __e2setcost(30)
 
+-- SPRITE REMOVE ALL --
 e2function entity spriteDeleteAll()
 	if not self.player:IsValid() or not self.player:IsPlayer() then return end
 	
