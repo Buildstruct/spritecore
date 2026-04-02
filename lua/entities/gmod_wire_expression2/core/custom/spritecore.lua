@@ -235,7 +235,7 @@ e2function entity spriteSpawn(index)
 	return CreateSprite(self, index)
 end
 
-e2function entity spriteRemoveAll()
+e2function entity spriteDeleteAll()
 	if not self.player:IsValid() or not self.player:IsPlayer() then return end
 	
 	spriteRemoveAll(self)
@@ -244,7 +244,7 @@ end
 __e2setcost(10)
 
 -- SPRITE REMOVE --
-e2function entity spriteRemove(index)
+e2function entity spriteDelete(index)
 	if not self.player:IsValid() or not self.player:IsPlayer() then return end
 	
 	local spr = getSprite(self, index)
